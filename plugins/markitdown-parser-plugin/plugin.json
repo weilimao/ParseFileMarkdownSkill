@@ -1,0 +1,17 @@
+{
+  "name": "markitdown-parser-plugin",
+  "version": "1.0.0",
+  "description": "Unified document parsing skill using Microsoft MarkItDown for Gemini Antigravity",
+  "author": {
+    "name": "Antigravity Dev Team"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "parser",
+    "pdf",
+    "docx",
+    "xlsx",
+    "markitdown",
+    "markdown"
+  ]
+}

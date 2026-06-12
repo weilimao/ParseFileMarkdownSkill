@@ -97,10 +97,11 @@ print(byte_result["content"])
 ### 方案 A：集成到 Antigravity / Gemini 平台 (Native Skill)
 如果您希望本地的 **Antigravity CLI、Antigravity 2.0、Antigravity IDE** 等 AI 工具自动识别并调用该 Skill：
 
-请拷贝本项目交付的 Native Skill 文件夹至您的 `.gemini` 插件配置目录下：
-1. 目标目录：`C:\Users\韦礼貌\.gemini\config\plugins\markitdown-parser-plugin\`
-2. 在该目录下放置您的 [plugin.json](file:///C:/Users/韦礼貌/.gemini/config/plugins/markitdown-parser-plugin/plugin.json) 与 [skills/parse_document/SKILL.md](file:///C:/Users/韦礼貌/.gemini/config/plugins/markitdown-parser-plugin/skills/parse_document/SKILL.md) 技能声明文件。
-3. **效果**：AI 系统载入后会知道自己拥有 `parse_document` 能力，当您对它说：*“分析这个 PDF 合同”*，它便会自动调度该 Skill 获取内容。
+请拷贝本仓库中自带的 `plugins/markitdown-parser-plugin` 目录至您的本地 `.gemini` 插件配置目录下：
+1. 复制源目录：本仓库中的 [plugins/markitdown-parser-plugin/](file:///e:/GPT/ParseFileSkill/plugins/markitdown-parser-plugin)
+2. 本地目标配置目录：`C:\Users\韦礼貌\.gemini\config\plugins\markitdown-parser-plugin\`
+3. **效果**：将文件夹复制过去并重启 AI 后，AI 系统载入时会自动加载 `parse_document` 技能，当您让它分析文档时，它便会自动调度该 Skill 获取内容。
+
 
 ### 方案 B：集成到 Claude Code (Studio MCP)
 在您的终端运行以下命令（追加全局 `--scope user`），即可让 Claude Code 将该 Skill 注册为常驻 Tool：
