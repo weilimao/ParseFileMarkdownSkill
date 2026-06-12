@@ -103,19 +103,15 @@ print(byte_result["content"])
 3. **效果**：将文件夹复制过去并重启 AI 后，AI 系统载入时会自动加载 `parse_document` 技能，当您让它分析文档时，它便会自动调度该 Skill 获取内容。
 
 
-### 方案 B：集成到 Claude Code (Studio MCP)
-在您的终端运行以下命令（追加全局 `--scope user`），即可让 Claude Code 将该 Skill 注册为常驻 Tool：
-```bash
-claude mcp add --transport stdio --scope user markitdown-mcp -- markitdown-mcp
-```
+### 方案 B：集成到 Claude Code (CLAUDE.md Skill 配置)
+如果您希望 **Claude Code** 命令行工具在分析文档时自动调用本 Skill：
+1. 请拷贝本仓库根目录下的 [CLAUDE.md](file:///e:/GPT/ParseFileSkill/CLAUDE.md) 规则文件至您具体开发项目的根目录下。
+2. **效果**：Claude Code 在启动时会自动读取该文件中的指导规则。当您让它分析或总结 PDF、Word、Excel 等文件时，它会自觉在后台运行 `markitdown-skill <file_path>` 并读取转换后的 Markdown 内容，不再需要您手动告诉它去运行。
 
-### 方案 C：集成到 Cursor 编译器
-1. 打开 Cursor，进入 **Settings** -> **Features** -> **MCP**。
-2. 点击 **+ Add New MCP Server**：
-   - **Name**: `markitdown-mcp`
-   - **Type**: `command`
-   - **Command**: `markitdown-mcp`
-3. 保存即可。在 Cursor 的 Composer (Ctrl+I) 或聊天室中提及非纯文本文件时，Cursor 即可调用它。
+### 方案 C：集成到 Cursor / CodeX 编译器 (.cursorrules Skill 配置)
+如果您希望 **Cursor** 或 **CodeX** 编辑器中的 AI 自动调用本 Skill：
+1. 请拷贝本仓库根目录下的 [.cursorrules](file:///e:/GPT/ParseFileSkill/.cursorrules) 规则文件至您开发项目的根目录下。
+2. **效果**：Cursor/CodeX 的 AI 助手在处理非纯文本文件时，会根据规则指示，自动通过终端命令 `markitdown-skill` 去获取结构化 Markdown，实现全自动的解析与阅读。
 
 ---
 
