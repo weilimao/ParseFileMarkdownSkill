@@ -13,7 +13,7 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-    "markitdown>=0.0.1a4",
+    "markitdown[all]>=0.0.1a4",
     "openai",
     "mcp"
 ]

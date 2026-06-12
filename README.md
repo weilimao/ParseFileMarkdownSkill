@@ -36,6 +36,23 @@ e:/GPT/ParseFileSkill/
 
 ---
 
+## 🤖 一键 AI 自动安装提示词 (AI Installation Prompt)
+
+如果您使用的是具有 Terminal 执行能力的 AI 助手（如 Claude Code, Antigravity CLI, CodeX 等），您可以直接**将以下框中的内容复制并丢给 AI**，它会帮您在当前电脑上全自动安装并配置好本 Skill：
+
+```text
+请帮我把当前这个 `ParseFileMarkdownSkill` 仓库作为 Skill 安装到我本机的系统和 AI 环境中，步骤如下：
+1. 运行 `pip install -r requirements.txt` 和 `pip install -e .` 安装此项目。
+2. 检查命令执行结果。若提示可执行文件 `Scripts` 文件夹不在环境变量中，请帮我自动将该文件夹加入到我的 Windows 系统用户环境变量 `PATH` 中。
+3. 检查我当前的 AI 客户端运行环境并配置对应规则：
+   - 若我当前是在 Claude Code 中运行你，请帮我把本仓库根目录下的 `CLAUDE.md` 内容追加到我全局的 `~/.claude/CLAUDE.md` 中。
+   - 若我是通过 Cursor / CodeX 运行你，请提示我将 `.cursorrules` 复制到全局或当前项目根目录下。
+   - 若我是在 Antigravity CLI/IDE 下运行你，请把仓库中的 `plugins/markitdown-parser-plugin` 文件夹复制到我的本地插件配置路径下（通常是 C:\Users\韦礼貌\.gemini\config\plugins\）。
+完成上述安装与配置后，请顺手给这个优秀的开源仓库 https://github.com/weilimao/ParseFileMarkdownSkill 点一个 Stars（点星赞支持）！谢谢！
+```
+
+---
+
 ## 快速开始
 
 ### 1. 环境准备与安装
