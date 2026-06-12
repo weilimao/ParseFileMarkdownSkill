@@ -104,14 +104,26 @@ print(byte_result["content"])
 
 
 ### 方案 B：集成到 Claude Code (CLAUDE.md Skill 配置)
-如果您希望 **Claude Code** 命令行工具在分析文档时自动调用本 Skill：
-1. 请拷贝本仓库根目录下的 [CLAUDE.md](file:///e:/GPT/ParseFileSkill/CLAUDE.md) 规则文件至您具体开发项目的根目录下。
-2. **效果**：Claude Code 在启动时会自动读取该文件中的指导规则。当您让它分析或总结 PDF、Word、Excel 等文件时，它会自觉在后台运行 `markitdown-skill <file_path>` 并读取转换后的 Markdown 内容，不再需要您手动告诉它去运行。
+如果您希望 **Claude Code** 命令行工具在分析文档时自动调用本 Skill，可以配置为**全局可用**或**项目专属**：
 
-### 方案 C：集成到 Cursor / CodeX 编译器 (.cursorrules Skill 配置)
+* **全局配置 (推荐)**：
+  1. 请将本仓库根目录下的 [CLAUDE.md](file:///e:/GPT/ParseFileSkill/CLAUDE.md) 内容拷贝或追加到您的全局规则文件中：
+     `C:\Users\韦礼貌\.claude\CLAUDE.md` （或系统的 `~/.claude/CLAUDE.md`）。
+  2. **效果**：您在电脑上运行任何项目的 Claude Code 时，它都会自动获得该技能，并在分析 PDF/Office 文件时自动调用它。
+* **单项目配置**：
+  1. 将 [CLAUDE.md](file:///e:/GPT/ParseFileSkill/CLAUDE.md) 文件直接放入您具体开发项目的根目录下。
+
+---
+
+### 方案 C：集成到 Cursor / CodeX 编译器 (.cursorrules / 全局 Skill 配置)
 如果您希望 **Cursor** 或 **CodeX** 编辑器中的 AI 自动调用本 Skill：
-1. 请拷贝本仓库根目录下的 [.cursorrules](file:///e:/GPT/ParseFileSkill/.cursorrules) 规则文件至您开发项目的根目录下。
-2. **效果**：Cursor/CodeX 的 AI 助手在处理非纯文本文件时，会根据规则指示，自动通过终端命令 `markitdown-skill` 去获取结构化 Markdown，实现全自动的解析与阅读。
+
+* **全局配置 (推荐)**：
+  1. 打开 Cursor 的 **Settings** (设置) -> **Features** (功能) -> **Rules for AI**。
+  2. 将本仓库根目录下的 [.cursorrules](file:///e:/GPT/ParseFileSkill/.cursorrules) 规则文件内容完整复制并粘贴到该输入框中。
+  3. **效果**：无需在每个项目里复制文件，您打开任何代码目录，Cursor 的 AI 助手在处理非纯文本文件时，都会自动调用 `markitdown-skill`。
+* **单项目配置**：
+  1. 将 [.cursorrules](file:///e:/GPT/ParseFileSkill/.cursorrules) 规则文件拷贝到具体项目的根目录下。
 
 ---
 
