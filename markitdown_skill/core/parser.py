@@ -42,6 +42,7 @@ class MarkItDownParser:
         temp_file_created = False
         target_path = ""
         resolved_file_name = file_name or ""
+        preprocessed_path = ""
 
         if isinstance(source, bytes):
             if not resolved_file_name:
@@ -64,10 +65,22 @@ class MarkItDownParser:
                 raise FileNotFoundError(f"Source file not found at: {target_path}")
             resolved_file_name = os.path.basename(target_path)
 
+        # Preprocess DOCX for pasted images
+        is_docx = resolved_file_name.lower().endswith(".docx")
+        conversion_path = target_path
+        if is_docx:
+            try:
+                from ..utils.docx_preprocessor import preprocess_docx
+                preprocessed_path = preprocess_docx(target_path)
+                if preprocessed_path != target_path:
+                    conversion_path = preprocessed_path
+            except Exception as e:
+                logger.warning(f"Failed to preprocess docx file for pasted images: {e}")
+
         start_time = time.time()
         try:
             logger.info(f"Parsing document: {resolved_file_name}")
-            result = self.md.convert(target_path)
+            result = self.md.convert(conversion_path)
             duration_ms = int((time.time() - start_time) * 1000)
 
             # Gather metadata
@@ -113,3 +126,10 @@ class MarkItDownParser:
                     logger.debug(f"Removed temp file: {target_path}")
                 except Exception as e:
                     logger.warning(f"Failed to remove temp file {target_path}: {e}")
+            if preprocessed_path and preprocessed_path != target_path and os.path.exists(preprocessed_path):
+                try:
+                    os.remove(preprocessed_path)
+                    logger.debug(f"Removed temporary preprocessed docx file: {preprocessed_path}")
+                except Exception as e:
+                    logger.warning(f"Failed to remove temporary preprocessed file {preprocessed_path}: {e}")
+
