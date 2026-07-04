@@ -106,6 +106,7 @@ class TestDocxPastedImage(unittest.TestCase):
         
         # Verify that the image was extracted. It should contain markdown image tag with base64 data.
         self.assertIn("data:image/png;base64", content)
+        self.assertNotIn("base64...", content)
 
 if __name__ == "__main__":
     unittest.main()

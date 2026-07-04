@@ -80,7 +80,7 @@ class MarkItDownParser:
         start_time = time.time()
         try:
             logger.info(f"Parsing document: {resolved_file_name}")
-            result = self.md.convert(conversion_path)
+            result = self.md.convert(conversion_path, keep_data_uris=True)
             duration_ms = int((time.time() - start_time) * 1000)
 
             # Gather metadata
