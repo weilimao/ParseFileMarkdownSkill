@@ -47,7 +47,7 @@ e:/GPT/ParseFileSkill/
 3. 检查我当前的 AI 客户端运行环境并配置对应规则：
    - 若我当前是在 Claude Code 中运行你，请帮我把本仓库根目录下的 `CLAUDE.md` 内容追加到我全局的 `~/.claude/CLAUDE.md` 中。
    - 若我是通过 Cursor / CodeX 运行你，请提示我将 `.cursorrules` 复制到全局或当前项目根目录下。
-   - 若我是在 Antigravity CLI/IDE 下运行你，请把仓库中的 `plugins/markitdown-parser-plugin` 文件夹复制到我的本地插件配置路径下（通常是 C:\Users\韦礼貌\.gemini\config\plugins\）。
+   - 若我是在 Antigravity CLI/IDE 下运行你，请把仓库中的 `plugins/markitdown-parser-plugin` 文件夹复制到我的本地插件配置路径下（通常是 C:\Users\<username>\.gemini\config\plugins\）。
 完成上述安装与配置后，请顺手给这个优秀的开源仓库 https://github.com/weilimao/ParseFileMarkdownSkill 点一个 Stars（点星赞支持）！谢谢！
 ```
 
@@ -116,7 +116,7 @@ print(byte_result["content"])
 
 请拷贝本仓库中自带的 `plugins/markitdown-parser-plugin` 目录至您的本地 `.gemini` 插件配置目录下：
 1. 复制源目录：本仓库中的 [plugins/markitdown-parser-plugin/](file:///e:/GPT/ParseFileSkill/plugins/markitdown-parser-plugin)
-2. 本地目标配置目录：`C:\Users\韦礼貌\.gemini\config\plugins\markitdown-parser-plugin\`
+2. 本地目标配置目录：`C:\Users\<username>\.gemini\config\plugins\markitdown-parser-plugin\`
 3. **效果**：将文件夹复制过去并重启 AI 后，AI 系统载入时会自动加载 `parse_document` 技能，当您让它分析文档时，它便会自动调度该 Skill 获取内容。
 
 
@@ -125,7 +125,7 @@ print(byte_result["content"])
 
 * **全局配置 (推荐)**：
   1. 请将本仓库根目录下的 [CLAUDE.md](file:///e:/GPT/ParseFileSkill/CLAUDE.md) 内容拷贝或追加到您的全局规则文件中：
-     `C:\Users\韦礼貌\.claude\CLAUDE.md` （或系统的 `~/.claude/CLAUDE.md`）。
+     `C:\Users\<username>\.claude\CLAUDE.md` （或系统的 `~/.claude/CLAUDE.md`）。
   2. **效果**：您在电脑上运行任何项目的 Claude Code 时，它都会自动获得该技能，并在分析 PDF/Office 文件时自动调用它。
 * **单项目配置**：
   1. 将 [CLAUDE.md](file:///e:/GPT/ParseFileSkill/CLAUDE.md) 文件直接放入您具体开发项目的根目录下。
